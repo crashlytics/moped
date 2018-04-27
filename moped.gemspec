@@ -16,4 +16,6 @@ Gem::Specification.new do |s|
 
   s.files = Dir.glob("lib/**/*") + %w(CHANGELOG.md LICENSE README.md)
   s.require_path = "lib"
+
+  s.add_development_dependency 'gemfury', '0.4.24.beta4'
 end

@@ -93,6 +93,9 @@ module Moped
         elsif options[:ssl_ca_cert_object]
           raise TypeError("Option :ssl_ca_cert_object should be an array of OpenSSL::X509:Certificate objects") unless options[:ssl_ca_cert_object].is_a? Array
           options[:ssl_ca_cert_object].each {|cert| cert_store.add_cert(cert)}
+        elsif options[:ssl_cert_paths]
+          raise TypeError("Option :ssl_cert_paths should be an array of cert file paths") unless options[:ssl_cert_paths].is_a? Array
+          options[:ssl_cert_paths].each { |path| cert_store.add_file(path) }
         else
           cert_store.set_default_paths
         end
